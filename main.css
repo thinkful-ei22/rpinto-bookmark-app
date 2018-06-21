@@ -7,7 +7,12 @@
 }
 
 .form-container {
+  display: none;
 
+}
+
+#add-button {
+  
 }
 
 

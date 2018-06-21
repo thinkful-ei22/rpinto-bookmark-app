@@ -19,7 +19,9 @@ const bookmarkList = (function(){
 
   // I can add bookmarks to my bookmark list.
   function handleAddNewBookmark() {
-
+    $( "#add-button" ).click(function() {
+      alert("button clicked");
+    });  
   }
 
   // I can click on a bookmark to display the "detailed" view

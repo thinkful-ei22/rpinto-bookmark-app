@@ -3,24 +3,24 @@
 /* global Item, $ */
 
 const store = (function(){
-  "items": [
-    {
-      "uuid": ,
-      "title": ,
-      "url": ,
-      "rating": ,
-    },
-    {
-      "uuid": ,
-      "title": ,
-      "url": ,
-      "rating": ,
-    },
-  ],
+  // "items": [
+  //   {
+  //     "uuid": ,
+  //     "title": ,
+  //     "url": ,
+  //     "rating": ,
+  //   },
+  //   {
+  //     "uuid": ,
+  //     "title": ,
+  //     "url": ,
+  //     "rating": ,
+  //   },
+  // ],
   
-  filterValue = all,
-  form = false,
-  error = false,
+  // filterValue = all,
+  // form = false,
+  // error = false,
 
 
 
