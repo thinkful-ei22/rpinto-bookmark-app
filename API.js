@@ -6,17 +6,17 @@ const api = (function() {
   const BASE_URL = "https://thinkful-list-api.herokuapp.com/rpinto/bookmarks";
 
   const getBookmarks = function(callback) {
-    $.getJSON(`${BASE_URL}/items`, callback);
+    $.getJSON(`${BASE_URL}`, callback);
     
-    //callback('api module works!');
   };
 
-  const createBookmark = function(name, callback, errCallback) {
+  const createBookmark = function(title, url, callback, errCallback) {
     const newItem = JSON.stringify({
-      'name': name,
+      'title': title,
+      'url': url,
     });
     $.ajax({
-      'url': `${BASE_URL}/items`,
+      'url': `${BASE_URL}`,
       'method': 'POST',
       'contentType': 'application/json',
       'data': newItem,

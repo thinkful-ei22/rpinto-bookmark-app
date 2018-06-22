@@ -1,13 +1,13 @@
 'use strict';
 
 $(document).ready(function() {
+  
   bookmarkList.bindEventListeners();
-  bookmarkList.render();
-
-
-
-
+  
+  api.getBookmarks(function (bookmarks) {
+    bookmarks.forEach(bookmark => store.addItem(bookmark));
+    bookmarkList.render();
+  });
 
 });
 
-/* global store, $, api */

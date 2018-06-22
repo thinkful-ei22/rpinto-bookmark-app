@@ -1,28 +1,23 @@
 'use strict'
 
 const store = (function(){
-  let items = [
-    {
-      "uuid": 128309,
-      "title": "Article one",
-      "url": "www.articleone.com",
-      "rating": 3 ,
-    },
-    {
-      "uuid": 13452,
-      "title": "Article two",
-      "url": "www.articletwo.com",
-      "rating": 4 ,
-    },
-  ];
+  let items = [ ];
+
+  const addItem = function(item) {
+    this.items.push(item);
+  };
   
+  const findAndDelete = function(id) {
+    this.items = this.items.filter(item => item.id !== id);
+  };
 
   return {
     items: items,
     filterValue: 0,
-    showForm: false,
+    showDetail: false,
     error: false,
-
+    addItem,
+    findAndDelete,
   };
 
 }());

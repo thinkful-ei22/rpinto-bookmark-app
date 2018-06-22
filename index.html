@@ -31,10 +31,10 @@
   
   <!-- make form for create bookmark ** this needs to appear only when "Add" button is clicked-->
   <div class="form-container"> 
-    <form>
+    <form class="js-submit-form">
       <h3>Add Bookmark</h3>
-        <input type="text" name="Title" placeholder="Name your bookmark" required>
-        <input type="text" name="URL" placeholder="http://www.yoursitehere.com" required>
+        <input type="text" name="title" placeholder="Name your bookmark" required>
+        <input type="text" name="url" placeholder="http://www.yoursitehere.com" required>
         <textarea name="Describe" placeholder="What's this site about?" required></textarea>
         <input type="radio" name="rating" value="5 star">5 Stars<br>
         <input type="radio" name="rating" value="4 star">4 Stars<br>
@@ -49,23 +49,11 @@
       <h3>List of current bookmarks condensed</h3>
         <ul class="js-bookmarks-list">
           <li>
-            <div>Title</div>  
-            <div>Rating</div>
-          </li>     
-        </ul>
-    </div>
-  
-  <!-- make bookmark list with detail view-->
-    <div class = "container"> 
-      <h3>List of current bookmarks detail</h3>
-        <ul>
-          <li>
-            
               <div>Title</div>  
               <div>Rating</div>
               <div>Description</div>
-              <button type="submit" name="visit-site">Visit Site</button>
-              <button type="submit" name="delete-bookmark">Delete</button>
+              <li><a href"${item.url}"></a>Visit Site</a></li>
+              <button type="submit" name="delete-bookmark" class=".js-bookmark-delete">Delete</button>
           </li>     
         </ul>
       </div>

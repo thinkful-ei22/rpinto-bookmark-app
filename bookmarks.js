@@ -26,25 +26,49 @@ const bookmarkList = (function(){
     $('.js-bookmarks-list').html(bookmarkListItemsString);
   }
 
-  
+  //I can click on a bookmark to display the "detailed" view
+  function handleDetailToggle() {
+
+
+  }
   // I can add bookmarks to my bookmark list.
-  function handleAddNewBookmark() {
+  function toggleAddNewBookmarkForm() {
     $( "#add-button" ).click(function() {
       console.log("add button works")
-      $( ".form-container" ).show();
+      $( ".form-container" ).toggle();
 
     });  
   }
 
-  // I can click on a bookmark to display the "detailed" view
-  function handleDetailToggle() {
+  function handleSubmitBookmark() {
+      $( ".js-submit-form").on("submit", function(event) {
+      event.preventDefault();
+      const title = $("input[name = title]").val();
+      const url = $("input[name = url]").val();
+      api.createBookmark(title, url, function (newBookmark) {
+        store.addItem(newBookmark);
+        render();
+      })
+    })
+  };
 
-  }
 
   // I can remove bookmarks from my bookmark list
   function handleRemoveBookmark() {
-
+    $('.js-bookmark-detail').on('click', '.js-item-delete', event => {
+        
+        const id = getItemIdFromElement(event.currentTarget);
+        api.deleteItem(id, () => {
+          console.log(handleRemoveBookmark, "remove button");
+        store.findAndDelete(id);
+        render();
+      }, () => {
+        alert("There was an error with your request");
+      });
+    });
   }
+  
+
 
   // I can select from a dropdown a "minimum rating" to filter the list by all bookmarks rated above the chosen selection
   function handleRatingFilter() {
@@ -55,10 +79,11 @@ const bookmarkList = (function(){
 
     function bindEventListeners() {
       
-      handleAddNewBookmark();
+      toggleAddNewBookmarkForm();
       handleDetailToggle();
-      handleRemoveBookmark();
       handleRatingFilter();
+      handleSubmitBookmark();
+      handleRemoveBookmark();
 
     }
 
