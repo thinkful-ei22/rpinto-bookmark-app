@@ -10,11 +10,14 @@ const api = (function() {
     
   };
 
-  const createBookmark = function(title, url, callback, errCallback) {
+  const createBookmark = function(title, url, rating, description, callback, errCallback) {
     const newItem = JSON.stringify({
       'title': title,
       'url': url,
-    });
+      'rating': rating,
+      'description': description,
+      
+    })
     $.ajax({
       'url': `${BASE_URL}`,
       'method': 'POST',

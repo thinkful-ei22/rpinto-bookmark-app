@@ -8,10 +8,10 @@ const bookmarkList = (function(){
   function generateBookmarkElement(bookmark) {
     //TODO: change template to a new version with more features
     return `<li>
-              <div>${bookmark.title}</div>  
+              <div class="js-title">${bookmark.title}</div>  
               <div>${bookmark.rating}</div>
-            </li>  `
-
+              <div class="js-hide-element">${bookmark.description}</div>    
+            </li>`
   }
 
   function generateBookmarkString(bookmarks) {
@@ -25,6 +25,10 @@ const bookmarkList = (function(){
     const bookmarkListItemsString = generateBookmarkString(items);
     $('.js-bookmarks-list').html(bookmarkListItemsString);
   }
+
+  $(".js-bookmarks-list").on("click", ".js-title", function() {
+    $(this).parent().find(".js-hide-element").show();
+  } )
 
   //I can click on a bookmark to display the "detailed" view
   function handleDetailToggle() {
@@ -45,7 +49,8 @@ const bookmarkList = (function(){
       event.preventDefault();
       const title = $("input[name = title]").val();
       const url = $("input[name = url]").val();
-      api.createBookmark(title, url, function (newBookmark) {
+      const description = $("input[name = url]").val();
+      api.createBookmark(title, url, description, function (newBookmark) {
         store.addItem(newBookmark);
         render();
       })
