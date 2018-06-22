@@ -1,31 +1,27 @@
 'use strict'
 
-/* global Item, $ */
-
 const store = (function(){
-  // "items": [
-  //   {
-  //     "uuid": ,
-  //     "title": ,
-  //     "url": ,
-  //     "rating": ,
-  //   },
-  //   {
-  //     "uuid": ,
-  //     "title": ,
-  //     "url": ,
-  //     "rating": ,
-  //   },
-  // ],
+  let items = [
+    {
+      "uuid": 128309,
+      "title": "Article one",
+      "url": "www.articleone.com",
+      "rating": 3 ,
+    },
+    {
+      "uuid": 13452,
+      "title": "Article two",
+      "url": "www.articletwo.com",
+      "rating": 4 ,
+    },
+  ];
   
-  // filterValue = all,
-  // form = false,
-  // error = false,
-
-
-
 
   return {
+    items: items,
+    filterValue: 0,
+    showForm: false,
+    error: false,
 
   };
 

@@ -5,22 +5,34 @@
 const bookmarkList = (function(){
 
   // I can see a list of my bookmarks when I first open the app
-  function generateBookmarkList() {
+  function generateBookmarkElement(bookmark) {
+    //TODO: change template to a new version with more features
+    return `<li>
+              <div>${bookmark.title}</div>  
+              <div>${bookmark.rating}</div>
+            </li>  `
 
   }
 
-  function generateBookmarkString() {
-
+  function generateBookmarkString(bookmarks) {
+    const items = bookmarks.map((item) => generateBookmarkElement(item));
+    return items.join('');
   }
 
   function render() {
-
+    let items = store.items;
+    console.log('`render` ran');
+    const bookmarkListItemsString = generateBookmarkString(items);
+    $('.js-bookmarks-list').html(bookmarkListItemsString);
   }
 
+  
   // I can add bookmarks to my bookmark list.
   function handleAddNewBookmark() {
     $( "#add-button" ).click(function() {
-      alert("button clicked");
+      console.log("add button works")
+      $( ".form-container" ).show();
+
     });  
   }
 
@@ -42,12 +54,11 @@ const bookmarkList = (function(){
 
 
     function bindEventListeners() {
-      generateBookmarkList()
-      generateBookmarkString()
-      handleAddNewBookmark()
-      handleDetailToggle()
-      handleRemoveBookmark()
-      handleRatingFilter()
+      
+      handleAddNewBookmark();
+      handleDetailToggle();
+      handleRemoveBookmark();
+      handleRatingFilter();
 
     }
 
