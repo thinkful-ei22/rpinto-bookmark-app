@@ -20,16 +20,16 @@
     <button id= "add-button" type:"submit">Add Bookmark</button>
 
   <!-- filter button with dropdown List -->
-    <select>
-      <option>5 Stars</option>
-      <option>4 Stars</option>
-      <option>3 Stars</option>
-      <option>2 Stars</option>
-      <option>1 Star</option>   
+    <select class="js-filter">
+      <option value="5" >5 Stars</option>
+      <option value="4">4 Stars</option>
+      <option value="3">3 Stars</option>
+      <option value="2">2 Stars</option>
+      <option value="1">1 Star</option>   
     </select>
   </div>
   
-  <!-- make form for create bookmark ** this needs to appear only when "Add" button is clicked-->
+  <!-- Form for create bookmark ** this needs to appear only when "Add" button is clicked-->
   <div class="form-container"> 
     <form class="js-submit-form">
       <h3>Add Bookmark</h3>
@@ -44,7 +44,7 @@
         <input type="submit" value="submit">
     </form>
   </div>  
-  <!-- make bookmark list with condensed view -->
+  <!-- List of current Bookmarks-->
     <div class = "container"> 
       <h3>List of current bookmarks</h3>
         <ul class="js-bookmarks-list">

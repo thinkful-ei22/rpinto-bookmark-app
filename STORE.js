@@ -18,6 +18,7 @@ const store = (function(){
     error: false,
     addItem,
     findAndDelete,
+    minRating: 1,
   };
 
 }());
