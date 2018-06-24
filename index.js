@@ -5,7 +5,9 @@ $(document).ready(function() {
   bookmarkList.bindEventListeners();
   
   api.getBookmarks(function (bookmarks) {
-    bookmarks.forEach(bookmark => store.addItem(bookmark));
+    console.log(bookmarks);
+    bookmarks.forEach(bookmark => store.addItem(Object.assign({}, bookmark, {showDetail: false})));
+    console.log(store.items);
     bookmarkList.render();
   });
 

@@ -15,7 +15,7 @@ const api = (function() {
       'title': title,
       'url': url,
       'rating': rating,
-      'description': description,
+      'desc': description,
       
     })
     $.ajax({
@@ -31,7 +31,7 @@ const api = (function() {
   const updateBookmark = function(id, updateData, callback, errCallback) { 
     console.log(updateData)
     $.ajax({ 
-      'url': `${BASE_URL}/items/${id}`, 
+      'url': `${BASE_URL}/${id}`, 
       'method': 'PATCH', 
       'contentType': 'application/json', 
       'data': JSON.stringify(updateData), 
@@ -42,7 +42,7 @@ const api = (function() {
 
   const deleteBookmark = function(id, callback, errCallback){
     $.ajax({
-      'url': `${BASE_URL}/items/${id}`, 
+      'url': `${BASE_URL}/${id}`, 
       'method': 'DELETE',
       'success': callback,
       'error': errCallback,

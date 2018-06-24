@@ -7,10 +7,14 @@ const bookmarkList = (function(){
   // I can see a list of my bookmarks when I first open the app
   function generateBookmarkElement(bookmark) {
     //TODO: change template to a new version with more features
-    return `<li>
+    return `<li data-item-id="${bookmark.id}" class='js-bookmark-element'>
               <div class="js-title">${bookmark.title}</div>  
               <div>${bookmark.rating}</div>
-              <div class="js-hide-element">${bookmark.description}</div>    
+              <div class="js-hide-element">
+                <span>${bookmark.desc}</span>
+                <a href="${bookmark.url}">Visit Site</a>
+                <button type="submit" name="delete-bookmark" class="js-bookmark-delete">Delete</button>  
+              </div>   
             </li>`
   }
 
@@ -26,13 +30,12 @@ const bookmarkList = (function(){
     $('.js-bookmarks-list').html(bookmarkListItemsString);
   }
 
-  $(".js-bookmarks-list").on("click", ".js-title", function() {
-    $(this).parent().find(".js-hide-element").show();
-  } )
 
-  //I can click on a bookmark to display the "detailed" view
+  //I can click on a bookmark to display the "detailed" view -- TOD0: this is happening in the DOM, we need to put it in the store
   function handleDetailToggle() {
-
+   $(".js-bookmarks-list").on("click", ".js-title", function() {
+      $(this).parent().find(".js-hide-element").toggle();
+    });
 
   }
   // I can add bookmarks to my bookmark list.
@@ -47,24 +50,31 @@ const bookmarkList = (function(){
   function handleSubmitBookmark() {
       $( ".js-submit-form").on("submit", function(event) {
       event.preventDefault();
-      const title = $("input[name = title]").val();
-      const url = $("input[name = url]").val();
-      const description = $("input[name = url]").val();
-      api.createBookmark(title, url, description, function (newBookmark) {
+      const title = $("input[name=title]").val();
+      const url = $("input[name=url]").val();
+      const rating = $("input[name=rating]:checked").val();
+      const description = $("textarea[name=description]").val();
+        console.log(description);
+      api.createBookmark(title, url, rating, description, function (newBookmark) {
         store.addItem(newBookmark);
         render();
       })
     })
   };
 
+  function getItemIdFromElement(item) {
+    return $(item)
+      .closest('.js-bookmark-element')
+      .data('item-id');
+  }
 
   // I can remove bookmarks from my bookmark list
   function handleRemoveBookmark() {
-    $('.js-bookmark-detail').on('click', '.js-item-delete', event => {
+    $(".js-bookmarks-list").on('click', '.js-bookmark-delete', event => {
         
         const id = getItemIdFromElement(event.currentTarget);
-        api.deleteItem(id, () => {
-          console.log(handleRemoveBookmark, "remove button");
+        api.deleteBookmark(id, () => {
+         
         store.findAndDelete(id);
         render();
       }, () => {

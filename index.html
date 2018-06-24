@@ -35,7 +35,7 @@
       <h3>Add Bookmark</h3>
         <input type="text" name="title" placeholder="Name your bookmark" required>
         <input type="text" name="url" placeholder="http://www.yoursitehere.com" required>
-        <textarea name="Describe" placeholder="What's this site about?" required></textarea>
+        <textarea name="description" placeholder="What's this site about?" required></textarea>
         <input type="radio" name="rating" value="5 star">5 Stars<br>
         <input type="radio" name="rating" value="4 star">4 Stars<br>
         <input type="radio" name="rating" value="3 star">3 Stars<br>
@@ -46,15 +46,8 @@
   </div>  
   <!-- make bookmark list with condensed view -->
     <div class = "container"> 
-      <h3>List of current bookmarks condensed</h3>
+      <h3>List of current bookmarks</h3>
         <ul class="js-bookmarks-list">
-          <li>
-              <div>Title</div>  
-              <div>Rating</div>
-              <div>Description</div>
-          </li>  
-          <li><a href"${item.url}"></a>Visit Site</a></li>
-          <button type="submit" name="delete-bookmark" class=".js-bookmark-delete">Delete</button>    
         </ul>
       </div>
 
